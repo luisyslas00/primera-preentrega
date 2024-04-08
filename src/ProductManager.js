@@ -16,7 +16,7 @@ export default class ProductManager{
                 description:objeto.description,
                 price:objeto.price,
                 thumbnail:objeto.thumbnail,
-                status:"true",
+                status:true,
                 code:objeto.code,
                 stock:objeto.stock
             }
@@ -112,7 +112,6 @@ export default class ProductManager{
     }
     async writeFile(){
         try{
-            console.log(this.#products)
             await fs.promises.writeFile(this.path,JSON.stringify(this.#products,null,'\t'),'utf-8')
             console.log("Archivo guardado")
         }
