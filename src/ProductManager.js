@@ -22,18 +22,17 @@ export default class ProductManager{
             }
             const {title,description,price,thumbnail,code,stock} = product
             if(title===""||description===""||price===0||thumbnail===""||code===""||stock===0){
-                console.log("Rellenar correctamente los campos")
-                return "Rellenar correctamente los campos"
+                return {status:'failed', payload:"Rellenar correctamente los campos"}
             }
             let repite = this.#products.some(elemento=>{
                 return elemento.code === code
             })
             if(repite){
-                console.log("Código repetido")
-                return "Código repetido"
+                return {status:'failed', payload: "Código repetido"}
             }else{
                 this.#products.push(product)
                 this.writeFile()
+                return product
             }
         }
         catch(error){
@@ -72,23 +71,12 @@ export default class ProductManager{
                 return producto.id === id
             })
             if(existeProducto){
-                const {id,title,description,price,thumbnail,code,stock}= objeto
-                let nuevoProducto = {
-                    id:existeProducto.id,
-                    title:title||existeProducto.title,
-                    description:description||existeProducto.description,
-                    price:price||existeProducto.price,
-                    thumbnail:thumbnail||existeProducto.thumbnail,
-                    code:code||existeProducto.code,
-                    stock:stock||existeProducto.stock
-                }
-                let buscarProducto = this.#products.findIndex(elemento=>{
-                    return elemento.id === existeProducto.id
-                })
-                this.#products[buscarProducto] = nuevoProducto
+                let buscarProducto = this.#products.findIndex(elemento=> elemento.id === existeProducto.id)
+                this.#products[buscarProducto] = {...this.#products[buscarProducto], ...objeto}
                 this.writeFile()
+                return this.#products[buscarProducto]
             }else{
-                console.log("Producto con ID inexistente")
+                return {status:'failed', payload:'No existe producto con ese id'}
             }
         }
         catch(error){

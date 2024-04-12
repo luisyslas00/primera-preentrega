@@ -1,0 +1,36 @@
+[
+	{
+		"id": 1,
+		"title": "Gaseosa",
+		"description": "Bebida Pepsi",
+		"price": 1200,
+		"status": true,
+		"stock": 50
+	},
+	{
+		"id": 3,
+		"title": "Leche",
+		"description": "La Serenisima",
+		"price": 1000,
+		"status": false,
+		"code": "12400232",
+		"stock": 50
+	},
+	{
+		"id": 4,
+		"title": "Mermelada",
+		"description": "durazno",
+		"price": 3000,
+		"status": true,
+		"code": "0283729289",
+		"stock": 30
+	},
+	{
+		"id": 5,
+		"title": "Caramelo",
+		"price": 300,
+		"status": true,
+		"code": "0220729289",
+		"stock": 200
+	}
+]

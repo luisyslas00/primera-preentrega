@@ -1,0 +1,15 @@
+<div>
+    <h1>Tienda Online</h1>
+    {{#if productsExiste}}
+        <h2>Hay productos</h2>
+        {{#each productsDB}}
+            <div>
+                <p>Nombre:{{this.title}}</p>
+                <p>Precio:{{this.price}}</p>
+            </div>
+        {{/each}}
+    {{else}}
+        <h2>No hay productos</h2>
+    {{/if}}
+</div>
+<script src="./js/home.js"></script>

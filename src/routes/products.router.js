@@ -42,17 +42,9 @@ router.get('/:pid',async(req,res)=>{
 //Agregar producto
 router.post('/',async (req,res)=>{
     try{
-        const {title,description,price,thumbnail,code,stock} = req.body
-        const newProduct = {
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock
-        }
-        productManager.addProduct(newProduct)
-        res.send({status:"success",payload:newProduct})
+        const result = await productManager.addProduct(req.body)
+        if(result.status === 'failed')return res.send(result)
+        res.send({status:"success",payload:result})
     }
     catch(error){
         console.log(error)
@@ -62,13 +54,9 @@ router.post('/',async (req,res)=>{
 router.put('/:pid',async(req,res)=>{
     try{
         const {pid} = req.params
-        const updateProduct = req.body
-        const products = productManager.getProducts()
-        const productsDB = await products
-        const productFound = productsDB.find(product=>product.id ===Number(pid))
-        if(!productFound) return res.status(404).send({status:'error',error:'Product not found'})
-        productManager.updateProduct(Number(pid),updateProduct)
-        res.send({status:'success',payload:updateProduct})
+        const result = await productManager.updateProduct(Number(pid),req.body)
+        if(result.status === 'failed') return res.send(result)
+        res.send({status:'success',payload:result})
     }
     catch(error){
         console.log(error)
