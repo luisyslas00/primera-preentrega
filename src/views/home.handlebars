@@ -2,12 +2,14 @@
     <h1>Tienda Online</h1>
     {{#if productsExiste}}
         <h2>Hay productos</h2>
-        {{#each productsDB}}
-            <div>
-                <p>Nombre:{{this.title}}</p>
-                <p>Precio:{{this.price}}</p>
-            </div>
-        {{/each}}
+        <div class="container_products">
+            {{#each productsDB}}
+                <div class="card_product">
+                    <p>Nombre:{{this.title}}</p>
+                    <p>Precio:{{this.price}}</p>
+                </div>
+            {{/each}}
+        </div>
     {{else}}
         <h2>No hay productos</h2>
     {{/if}}
