@@ -44,10 +44,24 @@ app.use('/',viewsRouter)
 
 
 //Modo escucha
+// Desafio - No encontré manera de resolverlo
+import ProductManager from "./ProductManager.js"
+const path = './database.json'
 
-io.on('connection',socket=>{
+const productManager = new ProductManager(path)
+
+io.on('connection',async socket=>{
     console.log('Cliente conectado')
-    socket.on('addProduct',data=>{
-        console.log(data.newProduct)
+    socket.on('addProduct',async data=>{
+        await productManager.addProduct(data.newProduct)
+        const products = productManager.getProducts()
+        const productsDB = await products
+        socket.emit("listaProductos",{productsDB})
+    })
+    socket.on('productEliminar',async data=>{
+        await productManager.deleteProduct(Number(data.id))
+        const products = productManager.getProducts()
+        const productsDB = await products
+        socket.emit("listaProductos",{productsDB})
     })
 })

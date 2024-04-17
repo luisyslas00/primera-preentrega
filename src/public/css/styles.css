@@ -24,3 +24,9 @@ form{
 form input{
     margin-bottom: 0.6em;
 }
+
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

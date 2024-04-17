@@ -8,29 +8,33 @@
 		"stock": 50
 	},
 	{
-		"id": 3,
-		"title": "Leche",
-		"description": "La Serenisima",
-		"price": 1000,
-		"status": false,
-		"code": "12400232",
-		"stock": 50
+		"id": 7,
+		"title": "Banana",
+		"description": "fruta",
+		"price": "200",
+		"thumbnail": "asasiq",
+		"status": true,
+		"code": "209218318",
+		"stock": "200"
 	},
 	{
-		"id": 4,
-		"title": "Mermelada",
-		"description": "durazno",
-		"price": 3000,
+		"id": 8,
+		"title": "Mantecol",
+		"description": "barra",
+		"price": "2000",
+		"thumbnail": "oqweiqi",
 		"status": true,
-		"code": "0283729289",
-		"stock": 30
+		"code": "0129319",
+		"stock": "213129"
 	},
 	{
-		"id": 5,
-		"title": "Caramelo",
-		"price": 300,
+		"id": 10,
+		"title": "lasa",
+		"description": "lkwqelqk",
+		"price": "10219",
+		"thumbnail": "oqojwweqwo",
 		"status": true,
-		"code": "0220729289",
-		"stock": 200
+		"code": "012",
+		"stock": "2131"
 	}
 ]

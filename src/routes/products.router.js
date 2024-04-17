@@ -40,7 +40,7 @@ router.get('/:pid',async(req,res)=>{
     }
 })
 //Agregar producto
-router.post('/',async (req,res)=>{
+router.post('/',async (req,res,next)=>{
     try{
         const result = await productManager.addProduct(req.body)
         if(result.status === 'failed')return res.send(result)
